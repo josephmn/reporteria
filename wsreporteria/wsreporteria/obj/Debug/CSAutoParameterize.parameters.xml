@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="conexion-Web.config Connection String" description="conexion Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=ALTOMAYO-WEB; Initial Catalog=AM2022APP; USER ID=sa;password=Sgr9cl4v3s" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\programador\.app02\\Desktop\\wsreporteria\\wsreporteria\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='conexion']/@connectionString" />
+  </parameter>
+</parameters>
