@@ -35,8 +35,8 @@ namespace wsreporteria.Controller
                     obEListarOrdenVentaCab.RUC = drd["RUC"].ToString();
                     obEListarOrdenVentaCab.RAZON = drd["RAZON"].ToString();
                     obEListarOrdenVentaCab.MONTO_ORDEN = Convert.ToDouble(drd["MONTO_ORDEN"].ToString());
-                    obEListarOrdenVentaCab.PORCEN_PENDIENTE = drd["PORCEN_PENDIENTE"].ToString();
-                    obEListarOrdenVentaCab.PORCEN_ATENCION = drd["PORCEN_ATENCION"].ToString();
+                    obEListarOrdenVentaCab.PORCEN_PENDIENTE = Convert.ToDouble(drd["PORCEN_PENDIENTE"].ToString());
+                    obEListarOrdenVentaCab.PORCEN_ATENCION = Convert.ToDouble(drd["PORCEN_ATENCION"].ToString());
                     lEListarOrdenVentaCab.Add(obEListarOrdenVentaCab);
                 }
                 drd.Close();

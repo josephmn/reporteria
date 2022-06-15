@@ -14,7 +14,7 @@ namespace wsreporteria.Entity
         public String RUC { get; set; }
         public String RAZON { get; set; }
         public Double MONTO_ORDEN { get; set; }
-        public String PORCEN_PENDIENTE { get; set; }
-        public String PORCEN_ATENCION { get; set; }
+        public Double PORCEN_PENDIENTE { get; set; }
+        public Double PORCEN_ATENCION { get; set; }
     }
 }
