@@ -37,7 +37,8 @@ foreach ($ordenes_ventas as $orden) {
     $embarque_det = json_decode($result1->ListarEmbarquesXordenResult, true);
 
     // logica para la creacion de tabla en reporte
-    $tabla .= "
+    // $tabla .= "<p>/=*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*= =*=*=*= verdum perú sac =*=*=*=/</p>";
+    $tabla .= "<hr>
         <br>
         <br>
         <table cellspacing='1' cellpadding='5'>
@@ -87,7 +88,7 @@ foreach ($ordenes_ventas as $orden) {
     $result2 = $soap->ListarOrdenVentaDet($param2);
     $orden_det = json_decode($result2->ListarOrdenVentaDetResult, true);
 
-    /* ******************************************************************************************* */
+    /* ************************************************************************************************************************************************************************************************** */
     $cab_embarques = "";
     $cab_embarques_det = "";
     $i = 1;
@@ -187,6 +188,8 @@ foreach ($ordenes_ventas as $orden) {
     }
 
     $tabla .= "</table>";
+    // $tabla .= "<p>/*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/</p>";
+    // $tabla .= "<p>/=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=/</p>";
 
     $html = $tabla;
 }
@@ -207,6 +210,6 @@ $mpdf->SetTitle('ORDENES DE VENTAS - VERDUM PERÚ SAC - ' . date("Y"));
 // $mpdf->writeHTML($css, 1);
 // $mpdf->WriteHTML('<br/><br/><br/><h1 style="text-align:center "><u>FILL RATE - CONTROL DETALLADO</u></h1>');
 $mpdf->WriteHTML($html);
-// $mpdf->Output($nombre_archivo . '.pdf', 'I');
-$mpdf->Output($nombre_archivo, 'F');
+$mpdf->Output($nombre_archivo . '.pdf', 'I');
+// $mpdf->Output($nombre_archivo, 'F');
 exit;
