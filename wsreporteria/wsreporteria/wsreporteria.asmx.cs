@@ -12,7 +12,7 @@ namespace wsreporteria
     /// <summary>
     /// Descripción breve de wsreporteria
     /// </summary>
-    [WebService(Namespace = "http://www.mundoaltomayo.com/")]
+    [WebService(Namespace = "http://verdum.com/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
@@ -26,10 +26,10 @@ namespace wsreporteria
         public VListarEmbarquesXsku obEListarEmbarquesXsku = new VListarEmbarquesXsku();
 
         [WebMethod]
-        public string ListarOrdenVentaCab()
+        public string ListarOrdenVentaCab(Int32 post)
         {
             List<EListarOrdenVentaCab> lista = new List<EListarOrdenVentaCab>();
-            lista = obEListarOrdenVentaCab.ListarOrdenVentaCab();
+            lista = obEListarOrdenVentaCab.ListarOrdenVentaCab(post);
             string json = JsonConvert.SerializeObject(lista);
             return json;
         }

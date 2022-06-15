@@ -12,11 +12,13 @@ namespace wsreporteria.Controller
 {
     public class CListarOrdenVentaCab
     {
-        public List<EListarOrdenVentaCab> ListarOrdenVentaCab(SqlConnection con)
+        public List<EListarOrdenVentaCab> ListarOrdenVentaCab(SqlConnection con, Int32 post)
         {
             List<EListarOrdenVentaCab> lEListarOrdenVentaCab = null;
             SqlCommand cmd = new SqlCommand("ASP_LISTAR_ORDEN_VENTA_CAB", con);
             cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@post", SqlDbType.Int).Value = post;
 
             SqlDataReader drd = cmd.ExecuteReader(CommandBehavior.SingleResult);
 

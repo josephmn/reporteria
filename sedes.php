@@ -16,8 +16,12 @@ $options = array(
 );
 $soap = new SoapClient($wsdl, $options);
 
-// ordenes de ventas cabecera
-$result = $soap->ListarOrdenVentaCab();
+// Ordenes de ventas cabecera
+$param = array(
+    "post" => 2, // Ordenes no completadas aun (pendientes por despachar)
+);
+
+$result = $soap->ListarOrdenVentaCab($param);
 $ordenes_ventas = json_decode($result->ListarOrdenVentaCabResult, true);
 
 $html = "";
@@ -187,7 +191,7 @@ foreach ($ordenes_ventas as $orden) {
     $html = $tabla;
 }
 
-$nombre_archivo = "src/doc/" . "ODV_" . date("Ymd") . ".pdf";
+$nombre_archivo = "src/doc/" . "ODVP_" . date("Ymd") . ".pdf"; // ODVP (Ordenes De Ventas Pendientes)
 
 include_once("src/lib/mpdf/mpdf.php");
 // $css = file_get_contents('css/pdf.css');
