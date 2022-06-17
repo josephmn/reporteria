@@ -16,5 +16,9 @@ namespace wsreporteria.Entity
         public Double MONTO_ORDEN { get; set; }
         public Double PORCEN_PENDIENTE { get; set; }
         public Double PORCEN_ATENCION { get; set; }
+        public String GRUPO { get; set; }
+        public Int32 DIAS { get; set; }
+        public Int32 ROW { get; set; }
+        public String COMENTARIO { get; set; }
     }
 }
