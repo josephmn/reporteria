@@ -3,6 +3,9 @@
 $nombre_archivo = "src/doc/" . "ODVD_" . date("Ymd") . ".pdf"; // ODVP (Ordenes De Ventas Pendientes)
 
 include_once("src/lib/mpdf/mpdf.php");
+
+// require "src/lib/mpdf/mpdf.php";
+
 // $css = file_get_contents('css/pdf.css');
 $mpdf = new mPDF('utf-8', 'A3-L', 7, 'Arial', 15, 15, 25, 20, 10, 10, 'L');
 

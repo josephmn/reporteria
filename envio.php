@@ -5,13 +5,13 @@ date_default_timezone_set("America/Lima");
 // DETALLE DE CORREO - ENVIO (SEND)
 $envio_para = array(
     'programador.app02@verdum.com',
-    'sistemas@verdum.com'
+    // 'sistemas@verdum.com'
 );
 
 // DETALLE DE COOREO - EN COPIA (CC)
 $envio_cc = array(
     // 'programador.app01@verdum.com',
-    // 'programador.app03@verdum.com'
+    'programador.app03@verdum.com'
 );
 
 // DETALLE DE CORREO - COPIA OCULTA (CCO)
