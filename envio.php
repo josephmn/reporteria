@@ -4,14 +4,23 @@ date_default_timezone_set("America/Lima");
 
 // DETALLE DE CORREO - ENVIO (SEND)
 $envio_para = array(
-    'programador.app02@verdum.com',
-    // 'sistemas@verdum.com'
+    'juan.grandez@verdum.com',
+    'ventas.geografico@verdum.com',
+    'operaciones@verdum.com',
+    'ventas.tradicional@verdum.com',
+    'facturador.callao@verdum.com',
+    'tesoreria.callao@verdum.com',
+    'vmantilla@verdum.com',
 );
 
 // DETALLE DE COOREO - EN COPIA (CC)
 $envio_cc = array(
-    // 'programador.app01@verdum.com',
-    'programador.app03@verdum.com'
+    'programador.app02@verdum.com',
+    'programador.app03@verdum.com',
+    'sistemas@verdum.com',
+    'ventas.moderno@verdum.com',
+    'backoffice02@verdum.com',
+    'analista.operaciones@verdum.com',
 );
 
 // DETALLE DE CORREO - COPIA OCULTA (CCO)

@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("America/Lima");
+
 $nombre_archivo = "src/doc/" . "ODVD_" . date("Ymd") . ".pdf"; // ODVP (Ordenes De Ventas Pendientes)
 
 include_once("src/lib/mpdf/mpdf.php");
@@ -252,3 +254,4 @@ $mpdf->WriteHTML($html);
 // $mpdf->Output($nombre_archivo . '.pdf', 'I');
 $mpdf->Output($nombre_archivo, 'F');
 exit;
+?>
