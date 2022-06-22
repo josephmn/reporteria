@@ -16,6 +16,15 @@ $options = array(
 );
 $soap = new SoapClient($wsdl, $options);
 
+// Ordenes de Ventas del Día Anterior
+$param2 = array(
+    "post" => 3, // Ordenes de ventas del dia anterior
+);
+
+// Ordenes de Ventas del Día Anterior
+$result2 = $soap->ListarOrdenVentaCab($param2);
+$ordenes_anterior = json_decode($result2->ListarOrdenVentaCabResult, true);
+
 // Ordenes de ventas cabecera
 $param = array(
     "post" => 2, // Ordenes no completadas aun (pendientes por despachar)
@@ -32,7 +41,55 @@ $param1 = array(
 $result1 = $soap->ListarEmbarquesXorden($param1);
 $embarque_det = json_decode($result1->ListarEmbarquesXordenResult, true);
 
-/* ******************************************************************************************* */
+/* ********************************************** TABLA ODV DIA ANTERIOR (BEGIN) ********************************************** */
+$tabla_ant = "";
+$tabla_ant .= "
+    <br>
+    <table cellspacing='1' cellpadding='5'>
+        <thead>
+            <tr ALIGN=center>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ORDEN VENTA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>FECHA ORDEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PERIODO</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ALMACEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RUC</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RAZON</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>TOTAL ORDEN (S/)</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% PENDIENTE</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% ATENCION</th>
+            </tr>
+        </thead>
+    ";
+foreach ($ordenes_anterior as $orden_an) {
+
+    if ($orden_an['PORCEN_PENDIENTE'] != 0) {
+        if (strval($orden_an['PORCEN_PENDIENTE']) <= 75) {
+            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
+        } elseif (strval($orden_an['PORCEN_PENDIENTE']) >= 76 && strval($orden_an['PORCEN_PENDIENTE']) <= 99) {
+            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
+        }
+    } else {
+        $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</th>";
+    }
+
+    $tabla_ant .= "
+            <tr>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . $orden_an['ORDEN_VENTA'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . $orden_an['FECHA_ORDEN'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . $orden_an['PERIODO'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . $orden_an['ALMACEN'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden_an['RUC'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden_an['RAZON'] . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden_an['MONTO_ORDEN'], 2) . "</th>
+                " . $pendiente_ant . "
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden_an['PORCEN_ATENCION'] . " %" . "</th>
+            </tr>
+            ";
+}
+$tabla_ant .= "</table>";
+/* ********************************************** TABLA ODV DIA ANTERIOR (BEGIN) ********************************************** */
+
+/* ********************************************** TABLA POR PERIODO (BEGIN) ********************************************** */
 // logica para la creacion de tabla en reporte
 $tabla_cab = "";
 $tabla_cab .= "
@@ -75,14 +132,16 @@ foreach ($ordenes_ventas as $orden) {
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RAZON'] . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['MONTO_ORDEN'], 2) . "</th>
             " . $pendiente . "
-            <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['PORCEN_ATENCION'] . "</th>
+            <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['PORCEN_ATENCION'] . " %" . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . count($embarque_det) . "</th>
         </tr>
         ";
 }
 $tabla_cab .= "</table>";
+/* ********************************************** TABLA POR PERIODO (END) ********************************************** */
 
-$html = $tabla_cab;
+// $html = $tabla_ant . $tabla_cab;
+$html = $tabla_ant;
 
 $nombre_archivo = "ODV_" . date("Ymd");
 
