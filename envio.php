@@ -11,6 +11,7 @@ $envio_para = array(
     'facturador.callao@verdum.com',
     'tesoreria.callao@verdum.com',
     'vmantilla@verdum.com',
+    'planeamiento@verdum.com',
 );
 
 // DETALLE DE COOREO - EN COPIA (CC)
