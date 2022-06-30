@@ -10,7 +10,7 @@ namespace wsreporteria.view
 {
     public class VListarFillRateXsku : BDconexion
     {
-        public List<EListarFillRateXsku> ListarFillRateXsku()
+        public List<EListarFillRateXsku> ListarFillRateXsku(Int32 post, String almacen)
         {
             List<EListarFillRateXsku> lCListarFillRateXsku = null;
             using (SqlConnection con = new SqlConnection(conexion))
@@ -19,7 +19,7 @@ namespace wsreporteria.view
                 {
                     con.Open();
                     CListarFillRateXsku oVListarFillRateXsku = new CListarFillRateXsku();
-                    lCListarFillRateXsku = oVListarFillRateXsku.ListarFillRateXsku(con);
+                    lCListarFillRateXsku = oVListarFillRateXsku.ListarFillRateXsku(con, post, almacen);
                 }
                 catch (SqlException)
                 {

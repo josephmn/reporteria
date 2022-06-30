@@ -64,10 +64,10 @@ namespace wsreporteria
         }
 
         [WebMethod]
-        public string ListarFillRateXsku()
+        public string ListarFillRateXsku(Int32 post, String almacen)
         {
             List<EListarFillRateXsku> lista = new List<EListarFillRateXsku>();
-            lista = obEListarFillRateXsku.ListarFillRateXsku();
+            lista = obEListarFillRateXsku.ListarFillRateXsku(post, almacen);
             string json = JsonConvert.SerializeObject(lista);
             return json;
         }

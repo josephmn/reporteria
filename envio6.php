@@ -32,9 +32,11 @@ $envio_cco = array(
 
 // ARCHIVOS QUE SE ADJUNTARAN POR RUTA
 $odvd = "src/doc/ODVD_" . date("Ymd") . ".pdf"; // orden de venta detallada
+$odvdsku = "src/doc/ODVSKU_" . date("Ymd") . ".pdf"; // FILL RATE por SKU
 
 $rutas = array(
     $odvd,
+    $odvdsku,
 );
 
 $envio_asunto = 'ALERTA FILL RATE - ' . date("Y");

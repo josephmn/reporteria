@@ -15,5 +15,8 @@ namespace wsreporteria.Entity
         public Int32 CANTIDAD_ORDEN { get; set; }
         public Int32 CANTIDAD_LLEVA { get; set; }
         public Double PORCENTAJE { get; set; }
+        public Int32 ROW { get; set; }
+        public String GRUPO { get; set; }
+        public String COMENTARIO { get; set; }
     }
 }
