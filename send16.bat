@@ -1,3 +1,3 @@
 cd c:\Apache24\htdocs\reporteria
-php envio.php
+php envio16.php
 exit

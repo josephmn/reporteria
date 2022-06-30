@@ -11,7 +11,6 @@ $envio_para = array(
     'facturador.callao@verdum.com',
     'tesoreria.callao@verdum.com',
     'vmantilla@verdum.com',
-    'planeamiento@verdum.com',
 );
 
 // DETALLE DE COOREO - EN COPIA (CC)
@@ -72,12 +71,12 @@ $options2 = array(
 );
 $soap2 = new SoapClient($wsdl2, $options2);
 
-// Ordenes de Ventas del Día Anterior
+// Ordenes de Ventas del Día (04:00 PM)
 $param3 = array(
-    "post" => 3, // Ordenes de ventas del dia anterior
+    "post" => 4, // Ordenes de ventas del dia anterior
 );
 
-// Ordenes de Ventas del Día Anterior
+// Ordenes de Ventas del Día (04:00 PM)
 $result3 = $soap2->ListarOrdenVentaCab($param3);
 $ordenes_anterior = json_decode($result3->ListarOrdenVentaCabResult, true);
 
@@ -137,7 +136,7 @@ if (!empty($envio_cco)) {
     }
 }
 
-/* ********************************************** TABLA ODV DIA ANTERIOR (BEGIN) ********************************************** */
+/* ********************************************** TABLA ODV DIA (04:00 PM) (BEGIN) ********************************************** */
 $tabla_ant = "";
 $tabla_ant .= "
     <br>
@@ -183,7 +182,7 @@ foreach ($ordenes_anterior as $orden_an) {
             ";
 }
 $tabla_ant .= "</table>";
-/* ********************************************** TABLA ODV DIA ANTERIOR (BEGIN) ********************************************** */
+/* ********************************************** TABLA ODV DIA (04:00 PM) (END) ********************************************** */
 
 /* ********************************************** TABLA POR PERIODO (BEGIN) ********************************************** */
 $table_fillrate = "";
