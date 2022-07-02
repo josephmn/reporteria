@@ -87,29 +87,31 @@ foreach ($ordenes_ventas as $orden) {
         <table cellspacing='1' cellpadding='5'>
             <thead>
                 <tr ALIGN=center>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ORDEN VENTA</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>FECHA ORDEN</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PERIODO</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ALMACEN</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RUC</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RAZON</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>TOTAL ORDEN (S/)</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% PENDIENTE</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% ATENCION</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'># EMBARQUES</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'># DIAS TRANSCURRIDOS</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>ORDEN VENTA</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>FECHA ORDEN</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>PERIODO</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>ALMACEN</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>RUC</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>RAZON</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>TOTAL ORDEN (S/)</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>% PENDIENTE</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>% ATENCION</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'># EMBARQUES</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'># DIAS TRANSCURRIDOS</th>
                 </tr>
             </thead>
         ";
 
-    if ($orden['PORCEN_PENDIENTE'] != 0) {
-        if (strval($orden['PORCEN_PENDIENTE']) <= 75) {
-            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
-        } elseif (strval($orden['PORCEN_PENDIENTE']) >= 76 && strval($orden['PORCEN_PENDIENTE']) <= 99) {
-            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
+    if (number_format($orden['PORCEN_ATENCION'], 0) != 0) {
+        if (number_format($orden['PORCEN_ATENCION'], 2) <= 75) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) >= 76 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 99) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         }
     } else {
-        $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</th>";
+        $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
     }
 
     $tabla .= "
@@ -121,8 +123,8 @@ foreach ($ordenes_ventas as $orden) {
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RUC'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RAZON'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['MONTO_ORDEN'], 2) . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['PORCEN_PENDIENTE'], 2) . " %" . "</th>
                 " . $pendiente . "
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . strval($orden['PORCEN_ATENCION']) . " %" . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . count($embarque_det) . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['DIAS'] . " dia(s) desde OV.</th>
             </tr>
@@ -143,8 +145,8 @@ foreach ($ordenes_ventas as $orden) {
     $i = 1;
     if (count($embarque_det) > 0) {
         foreach ($embarque_det as $emb) {
-            $cab_embarques .= "<th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>" . "(" . $i . ") " . $emb['EMBARQUE'] . "</th>";
-            $cab_embarques_det .= "<th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>" . $emb['FACTURA'] . " - " . $emb['FECHA_FACTURA'] . "</th>";
+            $cab_embarques .= "<th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>" . "(" . $i . ") " . $emb['EMBARQUE'] . "</th>";
+            $cab_embarques_det .= "<th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>" . $emb['FACTURA'] . " - " . $emb['FECHA_FACTURA'] . "</th>";
             $i++;
         }
     } else {
@@ -167,15 +169,15 @@ foreach ($ordenes_ventas as $orden) {
                     <th></th>" . $cab_embarques . "<th></th>
                 </tr>
                 <tr ALIGN=center>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ORDEN VENTA</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>#</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>SKU</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>DESCRIPCION SKU</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PRECIO</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>QTY ORDEN</th>
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>TOTAL (S/)</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ORDEN VENTA</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>#</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>SKU</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>DESCRIPCION SKU</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>PRECIO</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>QTY ORDEN</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>TOTAL (S/)</th>
                     " . $cab_embarques_det . "
-                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>QTY RESTANTE</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>QTY RESTANTE</th>
                 </tr>
             </thead>
         ";
@@ -213,11 +215,11 @@ foreach ($ordenes_ventas as $orden) {
                 $qty_orden = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden_det['CANTIDAD_ORDEN'] . "</th>";
                 $restante = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $qty_restante . "</th>";
             } else {
-                if (strval($orden['PORCEN_PENDIENTE']) <= 75) {
+                if (number_format($orden['PORCEN_ATENCION'], 2) <= 75) {
                     $new_sku = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . $orden_det['SKU'] . "</b></font></th>";
                     $qty_orden = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . $orden_det['CANTIDAD_ORDEN'] . "</b></font></th>";
                     $restante = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . $qty_restante . "</b></font></th>";
-                } elseif (strval($orden['PORCEN_PENDIENTE']) >= 76 && strval($orden['PORCEN_PENDIENTE']) <= 99) {
+                } elseif (number_format($orden['PORCEN_ATENCION'], 2) >= 76 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
                     $new_sku = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . $orden_det['SKU'] . "</b></font></th>";
                     $qty_orden = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . $orden_det['CANTIDAD_ORDEN'] . "</b></font></th>";
                     $restante = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . $qty_restante . "</b></font></th>";
@@ -254,4 +256,3 @@ $mpdf->WriteHTML($html);
 // $mpdf->Output($nombre_archivo . '.pdf', 'I');
 $mpdf->Output($nombre_archivo, 'F');
 exit;
-?>

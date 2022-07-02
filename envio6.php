@@ -161,14 +161,16 @@ $tabla_ant .= "
     ";
 foreach ($ordenes_anterior as $orden_an) {
 
-    if ($orden_an['PORCEN_PENDIENTE'] != 0) {
-        if (strval($orden_an['PORCEN_PENDIENTE']) <= 75) {
-            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
-        } elseif (strval($orden_an['PORCEN_PENDIENTE']) >= 76 && strval($orden_an['PORCEN_PENDIENTE']) <= 99) {
-            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
+    if (number_format($orden_an['PORCEN_ATENCION'], 0) != 0) {
+        if (number_format($orden_an['PORCEN_ATENCION'], 2) <= 75) {
+            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) >= 76 && number_format($orden_an['PORCEN_ATENCION'], 2) <= 99) {
+            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) > 99) {
+            $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         }
     } else {
-        $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . strval($orden_an['PORCEN_PENDIENTE']) . " %" . "</th>";
+        $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
     }
 
     $tabla_ant .= "
@@ -211,14 +213,16 @@ $table_fillrate .= "
     ";
 foreach ($ordenes_ventas as $orden) {
 
-    if ($orden['PORCEN_PENDIENTE'] != 0) {
-        if (strval($orden['PORCEN_PENDIENTE']) <= 75) {
-            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
-        } elseif (strval($orden['PORCEN_PENDIENTE']) >= 76 && strval($orden['PORCEN_PENDIENTE']) <= 99) {
-            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</b></font></th>";
+    if (number_format($orden['PORCEN_ATENCION'], 0) != 0) {
+        if (number_format($orden['PORCEN_ATENCION'], 2) <= 75) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) >= 76 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 99) {
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         }
     } else {
-        $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . strval($orden['PORCEN_PENDIENTE']) . " %" . "</th>";
+        $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
     }
 
     $table_fillrate .= "
@@ -231,7 +235,7 @@ foreach ($ordenes_ventas as $orden) {
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RAZON'] . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['MONTO_ORDEN'], 2) . "</th>
             " . $pendiente . "
-            <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['PORCEN_ATENCION'] . "</th>
+            <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . count($embarque_det) . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['DIAS'] . " dia(s) desde OV.</th>
         </tr>
