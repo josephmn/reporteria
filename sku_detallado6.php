@@ -88,10 +88,10 @@ foreach ($fill_rate_sku as $orden) {
     $fill_rate_sku_det = json_decode($result2->ListarFillRateXskuResult, true);
 
     foreach ($fill_rate_sku_det as $det) {
-        if ($det['PORCENTAJE'] != 0) {
-            if (number_format($det['PORCENTAJE'],2) <= 75) {
+        if (number_format($det['PORCENTAJE'], 0) != 0) {
+            if (number_format($det['PORCENTAJE'], 2) <= 75) {
                 $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($det['PORCENTAJE'], 2) . " %" . "</b></font></th>";
-            } elseif (number_format($det['PORCENTAJE'],2) > 75 && number_format($det['PORCENTAJE'],2) <= 99) {
+            } elseif (number_format($det['PORCENTAJE'], 2) > 75 && number_format($det['PORCENTAJE'], 2) <= 99) {
                 $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($det['PORCENTAJE'], 2) . " %" . "</b></font></th>";
             } elseif (number_format($orden['PORCENTAJE'], 2) > 99) {
                 $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCENTAJE'], 2) . " %" . "</b></font></th>";
