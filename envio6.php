@@ -147,15 +147,15 @@ $tabla_ant .= "
     <table cellspacing='1' cellpadding='5'>
         <thead>
             <tr ALIGN=center>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ORDEN VENTA</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>FECHA ORDEN</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PERIODO</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ALMACEN</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RUC</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RAZON</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>TOTAL ORDEN (S/)</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% PENDIENTE</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% ATENCION</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ORDEN VENTA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>FECHA ORDEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>PERIODO</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ALMACEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RUC</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RAZON</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>TOTAL ORDEN (S/)</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% PENDIENTE</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% ATENCION</th>
             </tr>
         </thead>
     ";
@@ -164,7 +164,7 @@ foreach ($ordenes_anterior as $orden_an) {
     if (number_format($orden_an['PORCEN_ATENCION'], 0) != 0) {
         if (number_format($orden_an['PORCEN_ATENCION'], 2) <= 75) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
-        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) >= 76 && number_format($orden_an['PORCEN_ATENCION'], 2) <= 99) {
+        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) > 75 && number_format($orden_an['PORCEN_ATENCION'], 2) <= 99) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) > 99) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
@@ -197,17 +197,17 @@ $table_fillrate .= "
     <table cellspacing='1' cellpadding='5'>
         <thead>
             <tr ALIGN=center>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ORDEN VENTA</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>FECHA ORDEN</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PERIODO</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ALMACEN</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RUC</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>RAZON</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>TOTAL ORDEN (S/)</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% PENDIENTE</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% ATENCION</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'># EMBARQUES</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'># DIAS TRANSCURRIDOS</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ORDEN VENTA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>FECHA ORDEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>PERIODO</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ALMACEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RUC</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RAZON</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>TOTAL ORDEN (S/)</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% PENDIENTE</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% ATENCION</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'># EMBARQUES</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'># DIAS TRANSCURRIDOS</th>
             </tr>
         </thead>
     ";
@@ -216,7 +216,7 @@ foreach ($ordenes_ventas as $orden) {
     if (number_format($orden['PORCEN_ATENCION'], 0) != 0) {
         if (number_format($orden['PORCEN_ATENCION'], 2) <= 75) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
-        } elseif (number_format($orden['PORCEN_ATENCION'], 2) >= 76 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 75 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 99) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";

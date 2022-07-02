@@ -66,14 +66,14 @@ foreach ($fill_rate_sku as $orden) {
     <table cellspacing='1' cellpadding='5'>
         <thead>
             <tr ALIGN=center>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>ALMACEN</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>PERIODO</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>SKU</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>NOMBRE PRODUCTO</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>FAMILIA</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>CANTIDAD ORDENADA</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>CANTIDAD ATENDIDA</th>
-                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#8fce00'>% PORCENTAJE</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>ALMACEN</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>PERIODO</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>SKU</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>NOMBRE PRODUCTO</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>FAMILIA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>CANTIDAD ORDENADA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>CANTIDAD ATENDIDA</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% PORCENTAJE</th>
             </tr>
         </thead>
     ";
@@ -89,13 +89,15 @@ foreach ($fill_rate_sku as $orden) {
 
     foreach ($fill_rate_sku_det as $det) {
         if ($det['PORCENTAJE'] != 0) {
-            if (strval($det['PORCENTAJE']) <= 75) {
-                $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . strval($det['PORCENTAJE']) . " %" . "</b></font></th>";
-            } elseif (strval($det['PORCENTAJE']) >= 76 && strval($det['PORCENTAJE']) <= 99) {
-                $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . strval($det['PORCENTAJE']) . " %" . "</b></font></th>";
+            if (number_format($det['PORCENTAJE'],2) <= 75) {
+                $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($det['PORCENTAJE'], 2) . " %" . "</b></font></th>";
+            } elseif (number_format($det['PORCENTAJE'],2) > 75 && number_format($det['PORCENTAJE'],2) <= 99) {
+                $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($det['PORCENTAJE'], 2) . " %" . "</b></font></th>";
+            } elseif (number_format($orden['PORCENTAJE'], 2) > 99) {
+                $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCENTAJE'], 2) . " %" . "</b></font></th>";
             }
         } else {
-            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right> 0.00 %" . "</th>";
+            $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCENTAJE'], 2) . " %" . "</b></font></th>";
         }
 
         $table_fillrate .= "

@@ -165,7 +165,7 @@ foreach ($ordenes_anterior as $orden_an) {
     if (number_format($orden_an['PORCEN_ATENCION'], 0) != 0) {
         if (number_format($orden_an['PORCEN_ATENCION'], 2) <= 75) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
-        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) >= 76 && number_format($orden_an['PORCEN_ATENCION'], 2) <= 99) {
+        } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) > 75 && number_format($orden_an['PORCEN_ATENCION'], 2) <= 99) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         } elseif (number_format($orden_an['PORCEN_ATENCION'], 2) > 99) {
             $pendiente_ant = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden_an['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
@@ -218,7 +218,7 @@ foreach ($ordenes_ventas as $orden) {
     if (number_format($orden['PORCEN_ATENCION'], 0) != 0) {
         if (number_format($orden['PORCEN_ATENCION'], 2) <= 75) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ff0000' ALIGN=right><font color='white'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
-        } elseif (number_format($orden['PORCEN_ATENCION'], 2) >= 76 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
+        } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 75 && number_format($orden['PORCEN_ATENCION'], 2) <= 99) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#ffff00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
         } elseif (number_format($orden['PORCEN_ATENCION'], 2) > 99) {
             $pendiente = "<th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' bgcolor='#8fce00' ALIGN=right><font color='black'><b>" . number_format($orden['PORCEN_ATENCION'], 2) . " %" . "</b></font></th>";
