@@ -27,7 +27,7 @@ $envio_cc = array(
 
 // DETALLE DE CORREO - COPIA OCULTA (CCO)
 $envio_cco = array(
-    'altomayo.info@cafealtomayo.com.pe'
+    'reportes@cafealtomayo.com',
 );
 
 // ARCHIVOS QUE SE ADJUNTARAN POR RUTA
