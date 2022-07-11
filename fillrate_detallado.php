@@ -94,6 +94,7 @@ foreach ($ordenes_ventas as $orden) {
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>RUC</th>
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>RAZON</th>
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>TOTAL ORDEN (S/)</th>
+                    <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>CANTIDAD BRUTO</th>
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>% PENDIENTE</th>
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'>% ATENCION</th>
                     <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#a7a7a7'># EMBARQUES</th>
@@ -123,7 +124,9 @@ foreach ($ordenes_ventas as $orden) {
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RUC'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RAZON'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['MONTO_ORDEN'], 2) . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['QTYBRUTO'], 0) . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['PORCEN_PENDIENTE'], 2) . " %" . "</th>
+                
                 " . $pendiente . "
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . count($embarque_det) . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden['DIAS'] . " dia(s) desde OV.</th>

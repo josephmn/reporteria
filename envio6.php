@@ -154,6 +154,7 @@ $tabla_ant .= "
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RUC</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RAZON</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>TOTAL ORDEN (S/)</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>CANTIDAD BRUTO</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% PENDIENTE</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% ATENCION</th>
             </tr>
@@ -182,6 +183,7 @@ foreach ($ordenes_anterior as $orden_an) {
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden_an['RUC'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden_an['RAZON'] . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden_an['MONTO_ORDEN'], 2) . "</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden_an['QTYBRUTO'], 0) . "</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . $orden_an['PORCEN_PENDIENTE'] . " %" . "</th>
                 " . $pendiente_ant . "
             </tr>
@@ -204,6 +206,7 @@ $table_fillrate .= "
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RUC</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>RAZON</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>TOTAL ORDEN (S/)</th>
+                <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>CANTIDAD BRUTO</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% PENDIENTE</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'>% ATENCION</th>
                 <th style='border: 1px solid black; border-collapse: collapse; border-color: black;' bgcolor='#D0D0D0'># EMBARQUES</th>
@@ -234,6 +237,7 @@ foreach ($ordenes_ventas as $orden) {
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RUC'] . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=left>" . $orden['RAZON'] . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['MONTO_ORDEN'], 2) . "</th>
+            <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['QTYBRUTO'], 0) . "</th>
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=right>" . number_format($orden['PORCEN_PENDIENTE'], 2) . " %" . "</th>
             " . $pendiente . "
             <th style='border: 1px solid black; border-collapse: collapse; border-color: black; font-weight: normal' ALIGN=center>" . count($embarque_det) . "</th>
