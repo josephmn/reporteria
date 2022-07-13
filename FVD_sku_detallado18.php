@@ -33,7 +33,7 @@ $soap = new SoapClient($wsdl, $options);
 
 // Fill Rate por SKU
 $param = array(
-    "post"      => 1, // ejecutar 06:00 AM
+    "post"      => 2, // ejecutar 18:00
     "almacen"   => "", // Para listar y agruparlos
 );
 
@@ -84,7 +84,7 @@ foreach ($fvd_sku as $orden) {
 
     // Fill Rate por SKU
     $param2 = array(
-        "post"      => 1, // ejecutar 06:00 AM
+        "post"      => 2, // ejecutar 18:00
         "almacen"   => $orden['GRUPO'], // Para detalle por SKU
     );
 
