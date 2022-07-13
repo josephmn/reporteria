@@ -33,13 +33,15 @@ $envio_cco = array(
 // ARCHIVOS QUE SE ADJUNTARAN POR RUTA
 $odvd = "src/doc/ODVD_" . date("Ymd") . ".pdf"; // orden de venta detallada
 $odvdsku = "src/doc/ODVSKU_" . date("Ymd") . ".pdf"; // FILL RATE por SKU
+$fvdsku = "src/doc/FVDSKU_" . date("Ymd") . ".pdf"; // FVD por SKU
 
 $rutas = array(
     $odvd,
     $odvdsku,
+    $fvdsku,
 );
 
-$envio_asunto = 'ALERTA FILL RATE - ' . date("Y");
+$envio_asunto = 'ALERTA FILL RATE 18:00 - ' . date("Y");
 
 // WS de produccion desde recursoshumanos para consultar credenciales de envio de correo (altomayo.info@cafealtomayo.com.pe)
 $wsdl = 'http://localhost:81/PAWEB/WSRecursos.asmx?WSDL';
@@ -300,3 +302,4 @@ if (!$mail->send()) {
     $output = 1; // SE ENVIO CORRECTAMENTE
 }
 exit;
+?>

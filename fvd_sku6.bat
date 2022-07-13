@@ -1,3 +1,3 @@
 cd c:\Apache24\htdocs\reporteria
-php sku_detallado16.php
+php FVD_sku_detallado6.php
 exit
