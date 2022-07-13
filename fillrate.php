@@ -146,7 +146,7 @@ $html = $tabla_ant;
 $nombre_archivo = "ODV_" . date("Ymd");
 
 include_once("src/lib/mpdf/mpdf.php");
-$css = file_get_contents('css/pdf.css');
+// $css = file_get_contents('css/pdf.css');
 $mpdf = new mPDF('P', 'A2', 7, 'Arial');
 
 // $mpdf->SetHTMLHeader('Verdum Perú SAC - ' . date("Y"));

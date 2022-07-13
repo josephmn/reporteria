@@ -26,6 +26,7 @@ namespace wsreporteria
         public VListarEmbarquesXsku obEListarEmbarquesXsku = new VListarEmbarquesXsku();
 
         public VListarFillRateXsku obEListarFillRateXsku = new VListarFillRateXsku();
+        public VListarFVDXsku obEListarFVDXsku = new VListarFVDXsku();
 
         [WebMethod]
         public string ListarOrdenVentaCab(Int32 post)
@@ -68,6 +69,15 @@ namespace wsreporteria
         {
             List<EListarFillRateXsku> lista = new List<EListarFillRateXsku>();
             lista = obEListarFillRateXsku.ListarFillRateXsku(post, almacen);
+            string json = JsonConvert.SerializeObject(lista);
+            return json;
+        }
+
+        [WebMethod]
+        public string ListarFVDXsku(Int32 post, String almacen)
+        {
+            List<EListarFVDXsku> lista = new List<EListarFVDXsku>();
+            lista = obEListarFVDXsku.ListarFVDXsku(post, almacen);
             string json = JsonConvert.SerializeObject(lista);
             return json;
         }

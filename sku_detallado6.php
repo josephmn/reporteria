@@ -45,7 +45,6 @@ $tabla = "";
 
 /* ********************************************** TABLA POR PERIODO (BEGIN) ********************************************** */
 $table_fillrate = "";
-$xgrupo = "";
 foreach ($fill_rate_sku as $orden) {
 
     if ($orden['GRUPO'] != NULL || $orden['GRUPO'] != "") {

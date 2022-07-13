@@ -76,17 +76,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexion.cs" />
+    <Compile Include="Controlador\CListarFVDXsku.cs" />
     <Compile Include="Controlador\CListarFillRateXsku.cs" />
     <Compile Include="Controlador\CListarOrdenVentaCab.cs" />
     <Compile Include="Controlador\CListarEmbarquesXorden.cs" />
     <Compile Include="Controlador\CListarEmbarquesXsku.cs" />
     <Compile Include="Controlador\CListarOrdenVentaDet.cs" />
+    <Compile Include="Entidad\EListarFVDXsku.cs" />
     <Compile Include="Entidad\EListarFillRateXsku.cs" />
     <Compile Include="Entidad\EListarOrdenVentaCab.cs" />
     <Compile Include="Entidad\EListarEmbarquesXorden.cs" />
     <Compile Include="Entidad\EListarEmbarquesXsku.cs" />
     <Compile Include="Entidad\EListarOrdenVentaDet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\VListarFVDXsku.cs" />
     <Compile Include="Vista\VListarFillRateXsku.cs" />
     <Compile Include="Vista\VListarOrdenVentaCab.cs" />
     <Compile Include="Vista\VListarEmbarquesXorden.cs" />
