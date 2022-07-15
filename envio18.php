@@ -43,25 +43,6 @@ $rutas = array(
 
 $envio_asunto = 'ALERTA FILL RATE 18:00 - ' . date("Y");
 
-// WS de produccion desde recursoshumanos para consultar credenciales de envio de correo (altomayo.info@cafealtomayo.com.pe)
-$wsdl = 'http://localhost:81/PAWEB/WSRecursos.asmx?WSDL';
-
-$options = array(
-    "uri" => $wsdl,
-    "style" => SOAP_RPC,
-    "use" => SOAP_ENCODED,
-    "soap_version" => SOAP_1_1,
-    "connection_timeout" => 60,
-    "trace" => false,
-    "encoding" => "UTF-8",
-    "exceptions" => false,
-);
-
-$soap = new SoapClient($wsdl, $options);
-
-$result = $soap->ConfiguracionCorreo();
-$conficorreo = json_decode($result->ConfiguracionCorreoResult, true);
-
 // WS para obtener cuadro de Ordenes de Ventas para FILL RATE
 $wsdl2 = 'http://localhost:81/WSREPORT/wsreporteria.asmx?WSDL';
 
@@ -105,21 +86,22 @@ $embarque_det = json_decode($result1->ListarEmbarquesXordenResult, true);
 // ENVIO DE CORREO
 include_once("src/lib/phpmaileradd/class.phpmailer.php");
 include_once("src/lib/phpmaileradd/PHPMailerAutoload.php");
+include_once("./Config.php");
 
 $mail = new PHPMailer;
 
 $mail->isSMTP();
-$mail->SMTPDebug = 0;
+$mail->SMTPDebug = false;
 $mail->SMTPAuth = true;
 // $mail->SMTPSecure = 'tls';
 $mail->Mailer = 'smtp';
-$mail->Host = $conficorreo[0]['v_servidor_entrante']; //mail.cafealtomayo.com.pe
-$mail->Username = $conficorreo[0]['v_correo_salida']; //reportes@cafealtomayo.com.pe
-$mail->Password = $conficorreo[0]['v_password']; //rpt4m2020
-$mail->Port = $conficorreo[0]['i_puerto']; //25
+$mail->Host = SERVIDOR; //mail.cafealtomayo.com.pe
+$mail->Username = CORREO; //reportes@cafealtomayo.com.pe
+$mail->Password = PASSWORD; //password
+$mail->Port = PUERTO; //25
 
-$mail->From = ($conficorreo[0]['v_correo_salida']); //reportes@cafealtomayo.com.pe
-$mail->FromName = $conficorreo[0]['v_nombre_salida']; // VERDUM PERÚ SAC
+$mail->From = (CORREO); //reportes@cafealtomayo.com.pe
+$mail->FromName = NOMBRE; // VERDUM PERÚ SAC
 
 // iteramos cantidad de correos en copia (CC)
 if (!empty($envio_para)) {
