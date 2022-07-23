@@ -84,8 +84,10 @@ $result1 = $soap2->ListarEmbarquesXorden($param1);
 $embarque_det = json_decode($result1->ListarEmbarquesXordenResult, true);
 
 // ENVIO DE CORREO
-include_once("src/lib/phpmaileradd/class.phpmailer.php");
-include_once("src/lib/phpmaileradd/PHPMailerAutoload.php");
+// include_once("src/lib/phpmaileradd/class.phpmailer.php");
+// include_once("src/lib/phpmaileradd/PHPMailerAutoload.php");
+include_once('src/lib/phpmailer/PHPMailer.php');
+include_once('src/lib/phpmailer/SMTP.php');
 include_once("./Config.php");
 
 $mail = new PHPMailer;
